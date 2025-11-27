@@ -425,6 +425,24 @@ footer a:hover {
   background: #024c9a;
 }
 
+.controls select {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-left: 0.5rem;
+}
+
+.controls select:focus {
+  border-color: #0366d6;
+  box-shadow: 0 0 0 2px rgba(3,102,214,0.2);
+  outline: none;
+}
+
+
 
 /* #Media Queries
 ================================================== */
