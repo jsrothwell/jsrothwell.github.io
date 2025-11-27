@@ -95,8 +95,8 @@ header h2 {
 }
 
 #container .inner {
-  max-width: 1200px; /* wider than the default */
-  margin: 0 auto;    /* keep it centered */
+  max-width: 1200px; /* or 1400px if you want more */
+  margin: 0 auto;
 }
 
 #container .inner img {
@@ -351,11 +351,13 @@ footer a:hover {
   gap: 1.5rem;
 }
 
+
 @media (min-width: 1200px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 
 
 .card {
