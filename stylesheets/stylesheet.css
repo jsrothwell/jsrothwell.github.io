@@ -90,7 +90,7 @@ header h2 {
 }
 
 #container .inner {
-	width: 1400px; /* or 1400px if you want more */
+	width: 90%; /* or 1400px if you want more */
   margin: 0 auto;
 }
 
