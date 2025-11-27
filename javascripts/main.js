@@ -90,7 +90,6 @@ function filterByTopic(topic) {
   const searchTerm = document.getElementById("search").value;
   const yearFilter = document.getElementById("year-filter").value;
 
-  // Filter repos by topic
   const filteredRepos = reposData.filter(repo =>
     repo.topics && repo.topics.includes(topic)
   );

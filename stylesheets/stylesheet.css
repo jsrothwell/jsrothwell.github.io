@@ -474,6 +474,19 @@ h1, h2, h3, h4 {
   outline: none;
 }
 
+#clear-filters {
+  background: #999;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#clear-filters:hover {
+  background: #666;
+}
 
 
 /* #Media Queries
