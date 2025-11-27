@@ -19,13 +19,9 @@ function populateYearDropdown(repos) {
     years.add(year);
   });
 
-  // Sort years descending
   const sortedYears = Array.from(years).sort((a, b) => b - a);
-
-  // Clear existing options
   yearSelect.innerHTML = '<option value="">All Years</option>';
 
-  // Add options dynamically
   sortedYears.forEach(year => {
     const option = document.createElement("option");
     option.value = year;
@@ -34,12 +30,11 @@ function populateYearDropdown(repos) {
   });
 }
 
-
-function renderRepos(sortBy, searchTerm, yearFilter, customRepos) {
+function renderRepos(sortBy, searchTerm, yearFilter, customRepos = null) {
   const grid = document.getElementById("repo-grid");
   grid.innerHTML = "";
 
-  let repos = customRepos || [...reposData];c
+  let repos = customRepos || [...reposData];
 
   // --- Filter by search term ---
   if (searchTerm) {
@@ -66,26 +61,42 @@ function renderRepos(sortBy, searchTerm, yearFilter, customRepos) {
 
   // --- Render cards ---
   repos.forEach(repo => {
-  const card = document.createElement("div");
-  card.className = "card";
+    const card = document.createElement("div");
+    card.className = "card";
 
-  // Language badge
-  const languageBadge = repo.language
-    ? `<span class="badge ${repo.language.toLowerCase()}">${repo.language}</span>`
-    : "";
+    const languageBadge = repo.language
+      ? `<span class="badge ${repo.language.toLowerCase()}">${repo.language}</span>`
+      : "";
 
-  // Topic badges
-  const topicBadges = repo.topics && repo.topics.length > 0
-    ? repo.topics.map(topic => `<span class="badge topic" data-topic="${topic}">${topic}</span>`).join("")
-    : "";
+    const topicBadges = repo.topics && repo.topics.length > 0
+      ? repo.topics.map(topic => `<span class="badge topic" data-topic="${topic}">${topic}</span>`).join("")
+      : "";
 
-  document.getElementById("repo-grid").addEventListener("click", e => {
-  if (e.target.classList.contains("topic")) {
-    const selectedTopic = e.target.getAttribute("data-topic");
-    filterByTopic(selectedTopic);
-  }
-});
+    card.innerHTML = `
+      <h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
+      <div class="card-content">
+        <p>${repo.description || "No description provided."}</p>
+        <div class="badges">
+          ${languageBadge}
+          ${topicBadges}
+        </div>
+      </div>
+      <div class="card-footer">
+        <p>
+          <i class="fa-solid fa-star"></i> ${repo.stargazers_count}
+          &nbsp; <i class="fa-solid fa-code-fork"></i> ${repo.forks_count}
+        </p>
+        <p>
+          <i class="fa-solid fa-clock"></i> Updated: ${new Date(repo.updated_at).toLocaleDateString()}
+        </p>
+        <a href="${repo.html_url}" target="_blank">View Repo</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
 
+// --- Topic filtering ---
 function filterByTopic(topic) {
   const searchTerm = document.getElementById("search").value;
   const yearFilter = document.getElementById("year-filter").value;
@@ -94,41 +105,10 @@ function filterByTopic(topic) {
     repo.topics && repo.topics.includes(topic)
   );
 
-  document.getElementById("clear-filters").addEventListener("click", () => {
-    // Reset search input
-    document.getElementById("search").value = "";
-
-    // Reset year dropdown
-    document.getElementById("year-filter").value = "";
-    
   renderRepos("stars", searchTerm, yearFilter, filteredRepos);
 }
 
-
-card.innerHTML = `
-<h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
-<div class="card-content">
-  <p>${repo.description || "No description provided."}</p>
-  <div class="badges">
-    ${languageBadge}
-    ${topicBadges}
-  </div>
-</div>
-<div class="card-footer">
-  <p>
-    <i class="fa-solid fa-star"></i> ${repo.stargazers_count}
-    &nbsp; <i class="fa-solid fa-code-fork"></i> ${repo.forks_count}
-  </p>
-  <p>
-    <i class="fa-solid fa-clock"></i> Updated: ${new Date(repo.updated_at).toLocaleDateString()}
-  </p>
-  <a href="${repo.html_url}" target="_blank">View Repo</a>
-</div>
-`;
-  grid.appendChild(card);
-});
-}
-
+// --- Event listeners ---
 document.addEventListener("DOMContentLoaded", () => {
   loadRepos();
 
@@ -145,4 +125,19 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("sort-updated").addEventListener("click", () => rerender("updated"));
   searchInput.addEventListener("input", () => rerender("stars"));
   yearSelect.addEventListener("change", () => rerender("stars"));
+
+  // Topic badge clicks (event delegation)
+  document.getElementById("repo-grid").addEventListener("click", e => {
+    if (e.target.classList.contains("topic")) {
+      const selectedTopic = e.target.getAttribute("data-topic");
+      filterByTopic(selectedTopic);
+    }
+  });
+
+  // Clear filters
+  document.getElementById("clear-filters").addEventListener("click", () => {
+    searchInput.value = "";
+    yearSelect.value = "";
+    renderRepos("stars", "", "");
+  });
 });
