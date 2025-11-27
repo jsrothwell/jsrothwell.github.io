@@ -489,6 +489,9 @@ h1, h2, h3, h4 {
 }
 
 .navbar {
+	position: sticky;       /* makes it stick */
+  top: 0;                 /* sticks to the very top */
+  z-index: 1000;          /* ensures it stays above cards */
   display: flex;
   justify-content: space-between;
   align-items: center;       /* ensures vertical centering */
