@@ -1,7 +1,9 @@
 let reposData = []; // store repos globally
 
 async function loadRepos() {
-  const response = await fetch("https://api.github.com/users/jsrothwell/repos?per_page=100");
+  const response = await fetch("https://api.github.com/users/jsrothwell/repos?per_page=100", {
+    headers: { Accept: "application/vnd.github.mercy-preview+json" }
+  });
   reposData = await response.json();
 
   populateYearDropdown(reposData);
@@ -64,25 +66,37 @@ function renderRepos(sortBy, searchTerm, yearFilter) {
 
   // --- Render cards ---
   repos.forEach(repo => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
-      <p>${repo.description || "No description provided."}</p>
-      <div class="badges">
-        ${repo.language ? `<span class="badge ${repo.language.toLowerCase()}">${repo.language}</span>` : ""}
-      </div>
-      <p>
-        <i class="fa-solid fa-star"></i> ${repo.stargazers_count}
-        &nbsp; <i class="fa-solid fa-code-fork"></i> ${repo.forks_count}
-      </p>
-      <p>
-        <i class="fa-solid fa-clock"></i> Updated: ${new Date(repo.updated_at).toLocaleDateString()}
-      </p>
-      <a href="${repo.html_url}" target="_blank">View Repo</a>
-    `;
-    grid.appendChild(card);
-  });
+  const card = document.createElement("div");
+  card.className = "card";
+
+  // Language badge
+  const languageBadge = repo.language
+    ? `<span class="badge ${repo.language.toLowerCase()}">${repo.language}</span>`
+    : "";
+
+  // Topic badges
+  const topicBadges = repo.topics && repo.topics.length > 0
+    ? repo.topics.map(topic => `<span class="badge topic">${topic}</span>`).join("")
+    : "";
+
+  card.innerHTML = `
+    <h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
+    <p>${repo.description || "No description provided."}</p>
+    <div class="badges">
+      ${languageBadge}
+      ${topicBadges}
+    </div>
+    <p>
+      <i class="fa-solid fa-star"></i> ${repo.stargazers_count}
+      &nbsp; <i class="fa-solid fa-code-fork"></i> ${repo.forks_count}
+    </p>
+    <p>
+      <i class="fa-solid fa-clock"></i> Updated: ${new Date(repo.updated_at).toLocaleDateString()}
+    </p>
+    <a href="${repo.html_url}" target="_blank">View Repo</a>
+  `;
+  grid.appendChild(card);
+});
 }
 
 document.addEventListener("DOMContentLoaded", () => {
