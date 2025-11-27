@@ -24,7 +24,7 @@
 
         <script>
     async function loadRepos() {
-      const response = await fetch("https://api.github.com/users/YOUR_USERNAME/repos");
+      const response = await fetch("https://api.github.com/users/jsrothwell/repos");
       const repos = await response.json();
       const grid = document.getElementById("repo-grid");
 
