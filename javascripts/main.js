@@ -94,6 +94,13 @@ function filterByTopic(topic) {
     repo.topics && repo.topics.includes(topic)
   );
 
+  document.getElementById("clear-filters").addEventListener("click", () => {
+    // Reset search input
+    document.getElementById("search").value = "";
+
+    // Reset year dropdown
+    document.getElementById("year-filter").value = "";
+    
   renderRepos("stars", searchTerm, yearFilter, filteredRepos);
 }
 
