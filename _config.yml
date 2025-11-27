@@ -11,7 +11,7 @@ author:
 
 # Build settings
 markdown: kramdown
-theme: jekflix
+theme: jekyll-theme-minimal
 
 # Jekflix theme options
 paginate: 6
