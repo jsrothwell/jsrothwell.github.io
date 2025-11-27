@@ -6,11 +6,11 @@ async function loadRepos() {
   renderRepos("stars", ""); // default sort by stars, no search filter
 }
 
-function renderRepos(sortBy, searchTerm) {
+function renderRepos(sortBy, searchTerm, yearFilter) {
   const grid = document.getElementById("repo-grid");
-  grid.innerHTML = ""; // clear existing cards
+  grid.innerHTML = "";
 
-  let repos = [...reposData]; // copy array
+  let repos = [...reposData];
 
   // --- Filter by search term ---
   if (searchTerm) {
@@ -18,6 +18,14 @@ function renderRepos(sortBy, searchTerm) {
       repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (repo.description && repo.description.toLowerCase().includes(searchTerm.toLowerCase()))
     );
+  }
+
+  // --- Filter by year ---
+  if (yearFilter) {
+    repos = repos.filter(repo => {
+      const year = new Date(repo.updated_at).getFullYear();
+      return year.toString() === yearFilter;
+    });
   }
 
   // --- Sort repos ---
@@ -31,44 +39,39 @@ function renderRepos(sortBy, searchTerm) {
   repos.forEach(repo => {
     const card = document.createElement("div");
     card.className = "card";
-
-    // Language badge
-    const languageBadge = repo.language
-      ? `<span class="badge ${repo.language.toLowerCase()}">${repo.language}</span>`
-      : "";
-
     card.innerHTML = `
       <h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
       <p>${repo.description || "No description provided."}</p>
       <div class="badges">
-        ${languageBadge}
+        ${repo.language ? `<span class="badge ${repo.language.toLowerCase()}">${repo.language}</span>` : ""}
       </div>
       <p>
         <i class="fa-solid fa-star"></i> ${repo.stargazers_count}
         &nbsp; <i class="fa-solid fa-code-fork"></i> ${repo.forks_count}
       </p>
+      <p>
+        <i class="fa-solid fa-clock"></i> Updated: ${new Date(repo.updated_at).toLocaleDateString()}
+      </p>
       <a href="${repo.html_url}" target="_blank">View Repo</a>
     `;
     grid.appendChild(card);
   });
-
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   loadRepos();
 
-  // Sort buttons
-  document.getElementById("sort-stars").addEventListener("click", () => {
-    const searchTerm = document.getElementById("search").value;
-    renderRepos("stars", searchTerm);
-  });
+  const searchInput = document.getElementById("search");
+  const yearSelect = document.getElementById("year-filter");
 
-  document.getElementById("sort-updated").addEventListener("click", () => {
-    const searchTerm = document.getElementById("search").value;
-    renderRepos("updated", searchTerm);
-  });
+  function rerender(sortBy) {
+    const searchTerm = searchInput.value;
+    const yearFilter = yearSelect.value;
+    renderRepos(sortBy, searchTerm, yearFilter);
+  }
 
-  // Search bar (live filtering)
-  document.getElementById("search").addEventListener("input", (e) => {
-    renderRepos("stars", e.target.value); // default sort by stars while typing
-  });
+  document.getElementById("sort-stars").addEventListener("click", () => rerender("stars"));
+  document.getElementById("sort-updated").addEventListener("click", () => rerender("updated"));
+  searchInput.addEventListener("input", () => rerender("stars"));
+  yearSelect.addEventListener("change", () => rerender("stars"));
 });
