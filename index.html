@@ -18,24 +18,24 @@
     <div id="container">
       <div class="inner">
 
-        <header>
-          <h1>Jamieson Rothwell's Projects</h1>
-          <h2></h2>
-        </header>
-
-        <div class="controls">
-          <input type="text" id="search" placeholder="Search repos...">
-          <button id="sort-stars">Sort by Stars</button>
-          <button id="sort-updated">Sort by Updated</button>
-          <select id="year-filter">
-            <option value="">All Years</option>
-            <option value="2025">2025</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-          </select>
-          <button id="clear-filters">Clear Filters</button>
-        </div>
+        <nav class="navbar">
+          <div class="navbar-left">
+            <h1 class="site-title">Jamieson Rothwell's Projects</h1>
+          </div>
+          <div class="navbar-right controls">
+            <input type="text" id="search" placeholder="Search repos...">
+            <select id="year-filter">
+              <option value="">All Years</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+            </select>
+            <button id="sort-stars">Sort by Stars</button>
+            <button id="sort-updated">Sort by Updated</button>
+            <button id="clear-filters">Clear Filters</button>
+          </div>
+        </nav>
 
 
         <div class="grid" id="repo-grid"></div>
