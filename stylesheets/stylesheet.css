@@ -89,12 +89,8 @@ header h2 {
   background: transparent url(../images/highlight-bg.jpg) 50% 0 no-repeat;
 }
 
-.inner {
-  margin: 0 auto;
-}
-
 #container .inner {
-  max-width: 1200px; /* or 1400px if you want more */
+	max-width: 1400px; /* or 1400px if you want more */
   margin: 0 auto;
 }
 
