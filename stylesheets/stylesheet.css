@@ -500,6 +500,8 @@ h1, h2, h3, h4 {
   color: #333;
   border-bottom: 1px solid #eee;
   margin-bottom: 2rem;       /* spacing before card grid */
+	box-shadow: 0 2px 4px rgba(0,0,0,0.08); /* subtle shadow */
+	transition: box-shadow 0.3s ease;
 }
 
 .site-title {
