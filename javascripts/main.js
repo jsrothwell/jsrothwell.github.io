@@ -39,7 +39,7 @@ function renderRepos(sortBy, searchTerm, yearFilter, customRepos) {
   const grid = document.getElementById("repo-grid");
   grid.innerHTML = "";
 
-  let repos = customRepos || [...reposData];
+  let repos = customRepos || [...reposData];c
 
   // --- Filter by search term ---
   if (searchTerm) {
@@ -99,22 +99,26 @@ function filterByTopic(topic) {
 }
 
 
-  card.innerHTML = `
-    <h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
-    <p>${repo.description || "No description provided."}</p>
-    <div class="badges">
-      ${languageBadge}
-      ${topicBadges}
-    </div>
-    <p>
-      <i class="fa-solid fa-star"></i> ${repo.stargazers_count}
-      &nbsp; <i class="fa-solid fa-code-fork"></i> ${repo.forks_count}
-    </p>
-    <p>
-      <i class="fa-solid fa-clock"></i> Updated: ${new Date(repo.updated_at).toLocaleDateString()}
-    </p>
-    <a href="${repo.html_url}" target="_blank">View Repo</a>
-  `;
+card.innerHTML = `
+<h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
+<div class="card-content">
+  <p>${repo.description || "No description provided."}</p>
+  <div class="badges">
+    ${languageBadge}
+    ${topicBadges}
+  </div>
+</div>
+<div class="card-footer">
+  <p>
+    <i class="fa-solid fa-star"></i> ${repo.stargazers_count}
+    &nbsp; <i class="fa-solid fa-code-fork"></i> ${repo.forks_count}
+  </p>
+  <p>
+    <i class="fa-solid fa-clock"></i> Updated: ${new Date(repo.updated_at).toLocaleDateString()}
+  </p>
+  <a href="${repo.html_url}" target="_blank">View Repo</a>
+</div>
+`;
   grid.appendChild(card);
 });
 }

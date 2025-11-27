@@ -351,9 +351,9 @@ footer a:hover {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem; /* increase gap so hover doesn’t collide */
+  gap: 1.5rem;
+  align-items: stretch; /* ensures equal height rows */
 }
-
 
 @media (min-width: 1200px) {
   .grid {
@@ -367,22 +367,24 @@ h1, h2, h3, h4 {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* spreads content evenly */
   font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
 	background: #fff;
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  will-change: transform; /* smoother animation */
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
 }
 
 .card:hover {
-  transform: translateY(-6px) scale(1.02);
+	transform: translateY(-6px) scale(1.02);
   box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-  z-index: 1; /* ensures hovered card sits above neighbors */
+  z-index: 1;
 }
-
 
 .card h3 {
   margin-top: 0;
@@ -396,6 +398,14 @@ h1, h2, h3, h4 {
   color: #555;
   margin-right: 4px;
 }
+
+.card-content {
+  flex: 1; /* takes up remaining space */
+}
+.card-footer {
+  margin-top: auto; /* pushes footer to bottom */
+}
+
 
 .sort-controls {
   text-align: center;
