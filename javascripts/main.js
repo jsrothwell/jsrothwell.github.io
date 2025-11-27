@@ -35,11 +35,11 @@ function populateYearDropdown(repos) {
 }
 
 
-function renderRepos(sortBy, searchTerm, yearFilter) {
+function renderRepos(sortBy, searchTerm, yearFilter, customRepos) {
   const grid = document.getElementById("repo-grid");
   grid.innerHTML = "";
 
-  let repos = [...reposData];
+  let repos = customRepos || [...reposData];
 
   // --- Filter by search term ---
   if (searchTerm) {
@@ -76,8 +76,28 @@ function renderRepos(sortBy, searchTerm, yearFilter) {
 
   // Topic badges
   const topicBadges = repo.topics && repo.topics.length > 0
-    ? repo.topics.map(topic => `<span class="badge topic">${topic}</span>`).join("")
+    ? repo.topics.map(topic => `<span class="badge topic" data-topic="${topic}">${topic}</span>`).join("")
     : "";
+
+  document.getElementById("repo-grid").addEventListener("click", e => {
+  if (e.target.classList.contains("topic")) {
+    const selectedTopic = e.target.getAttribute("data-topic");
+    filterByTopic(selectedTopic);
+  }
+});
+
+function filterByTopic(topic) {
+  const searchTerm = document.getElementById("search").value;
+  const yearFilter = document.getElementById("year-filter").value;
+
+  // Filter repos by topic
+  const filteredRepos = reposData.filter(repo =>
+    repo.topics && repo.topics.includes(topic)
+  );
+
+  renderRepos("stars", searchTerm, yearFilter, filteredRepos);
+}
+
 
   card.innerHTML = `
     <h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
