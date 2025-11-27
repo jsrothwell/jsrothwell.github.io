@@ -1,0 +1,30 @@
+# Site settings
+title: "Jamieson Rothwell's Code Site"
+description: "My portfolio and GitHub projects"
+url: "https://jsrothwell.github.io"
+baseurl: "" # leave empty for user/organization site
+
+# Author info
+author:
+  name: "Jamieson Rothwell"
+  email: "jamiesonrothwell@gmail.com"
+
+# Build settings
+markdown: kramdown
+theme: jekflix
+
+# Jekflix theme options
+paginate: 6
+paginate_path: "/page:num/"
+permalink: /:title/
+
+# Social links
+social:
+  github: jsrothwell
+  linkedin: jamie-s-rothwell
+
+# Plugins (GitHub Pages supports these)
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
