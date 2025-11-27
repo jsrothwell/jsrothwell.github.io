@@ -371,6 +371,25 @@ footer a:hover {
   margin-right: 4px;
 }
 
+.sort-controls {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.sort-controls button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #0366d6;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sort-controls button:hover {
+  background: #024c9a;
+}
+
 
 /* #Media Queries
 ================================================== */
