@@ -362,6 +362,15 @@ footer a:hover {
   margin-top: 0;
 }
 
+.card p {
+  margin: 0.5rem 0;
+}
+
+.card i {
+  color: #555;
+  margin-right: 4px;
+}
+
 
 /* #Media Queries
 ================================================== */
