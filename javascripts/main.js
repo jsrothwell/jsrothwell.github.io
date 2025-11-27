@@ -1,10 +1,37 @@
 let reposData = []; // store repos globally
 
 async function loadRepos() {
-  const response = await fetch("https://api.github.com/users/jsrothwell/repos");
+  const response = await fetch("https://api.github.com/users/jsrothwell/repos?per_page=100");
   reposData = await response.json();
-  renderRepos("stars", ""); // default sort by stars, no search filter
+
+  populateYearDropdown(reposData);
+  renderRepos("stars", "", "");
 }
+
+function populateYearDropdown(repos) {
+  const yearSelect = document.getElementById("year-filter");
+  const years = new Set();
+
+  repos.forEach(repo => {
+    const year = new Date(repo.updated_at).getFullYear();
+    years.add(year);
+  });
+
+  // Sort years descending
+  const sortedYears = Array.from(years).sort((a, b) => b - a);
+
+  // Clear existing options
+  yearSelect.innerHTML = '<option value="">All Years</option>';
+
+  // Add options dynamically
+  sortedYears.forEach(year => {
+    const option = document.createElement("option");
+    option.value = year;
+    option.textContent = year;
+    yearSelect.appendChild(option);
+  });
+}
+
 
 function renderRepos(sortBy, searchTerm, yearFilter) {
   const grid = document.getElementById("repo-grid");
