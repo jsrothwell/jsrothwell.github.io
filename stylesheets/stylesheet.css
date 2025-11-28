@@ -678,6 +678,15 @@ body.dark-mode .navbar-right button {
   border: 1px solid #444;
 }
 
+body.dark-mode .card-content,
+body.dark-mode .card-footer,
+body.dark-mode .card *,
+body.dark-mode .card h3,
+body.dark-mode .card p {
+  background: transparent !important;
+}
+
+
 /* Light mode baseline (keep as-is if you already have it) */
 .card h3 {
   color: #333;
