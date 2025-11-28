@@ -553,3 +553,22 @@ body.dark-mode .header {
 @media only screen and (min-width: 480px) and (max-width: 767px) { }
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) { }
+
+body.dark-mode header,
+body.dark-mode .header {
+  background: transparent !important;
+  border-bottom: 1px solid #333;
+}
+
+
+body.dark-mode .site-title,
+body.dark-mode header h1,
+body.dark-mode .header h1 {
+  color: #eee !important;
+  background: transparent !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-text-fill-color: #eee !important;
+  -webkit-text-stroke: 0 !important;
+  filter: none !important;
+}
