@@ -343,20 +343,21 @@ h1, h2, h3, h4 {
 
 /* NAVBAR */
 .navbar {
-  position: sticky;       /* makes it stick */
-  top: 0;                 /* sticks to the very top */
-  z-index: 1000;          /* ensures it stays above cards */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
-  align-items: center;    /* ensures vertical centering */
+  align-items: center;
   padding: 0.75rem 1.5rem;
-  background-color: #fff; /* match page background */
+  background-color: #fff;
   color: #333;
   border-bottom: 1px solid #eee;
-  margin-bottom: 2rem;    /* spacing before card grid */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08); /* subtle shadow */
+  margin-bottom: 4px;       /* reduced spacing */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   transition: box-shadow 0.3s ease;
 }
+
 .site-title {
   font-size: 1.25rem;
   font-weight: 600;
