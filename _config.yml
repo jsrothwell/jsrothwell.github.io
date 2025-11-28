@@ -11,7 +11,7 @@ author:
 
 # Build settings
 markdown: kramdown
-theme: jekflix
+description: Portfolio of repos and experiments
 remote_theme: thiagorossener/jekflix-theme
 
 # Jekflix theme options
