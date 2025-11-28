@@ -11,8 +11,7 @@ author:
 
 # Build settings
 markdown: kramdown
-description: Portfolio of repos and experiments
-remote_theme: thiagorossener/jekflix-theme
+theme: jekyll-theme-minimal
 
 # Jekflix theme options
 paginate: 6
@@ -26,7 +25,6 @@ social:
 
 # Plugins (GitHub Pages supports these)
 plugins:
-  - jekyll-remote-theme
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
