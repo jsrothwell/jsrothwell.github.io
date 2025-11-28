@@ -441,7 +441,7 @@ h1, h2, h3, h4 {
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 1rem;
-  background-color: #fff;
+	/* background-color: #fff; */
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
