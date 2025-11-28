@@ -603,3 +603,43 @@ body.dark-mode .site-title {
 body.dark-mode #container {
   background: none !important;
 }
+
+/* Default (light mode) styles are already defined */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #e0e0e0;
+    text-shadow: none !important;
+  }
+
+  .navbar {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  }
+
+  .card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  }
+
+  .navbar-right input,
+  .navbar-right select,
+  .navbar-right button {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+  }
+
+  .card h3 {
+    color: #eee;
+  }
+
+  .site-title {
+    color: #eee !important;
+  }
+}
