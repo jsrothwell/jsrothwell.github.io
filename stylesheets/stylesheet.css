@@ -530,6 +530,32 @@ body.dark-mode .card h3 {
   -webkit-text-stroke: 0;
 }
 
+body.dark-mode header h1 {
+  color: #eee;                  /* off-white for contrast */
+  background: transparent;      /* remove any fill */
+  text-shadow: none !important; /* kill the glow/inset */
+  -webkit-text-fill-color: #eee;
+  -webkit-text-stroke: 0;
+  filter: none;
+}
+
+body.dark-mode .header h1 {
+  color: #eee;
+  background: transparent;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #eee;
+  -webkit-text-stroke: 0;
+  filter: none;
+}
+
+body.dark-mode header,
+body.dark-mode .header {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid #333; /* optional: keep structure */
+}
+
+
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) { }
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
