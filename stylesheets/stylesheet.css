@@ -678,18 +678,43 @@ body.dark-mode .navbar-right button {
   border: 1px solid #444;
 }
 
-/* Default card title */
+/* Light mode baseline (keep as-is if you already have it) */
 .card h3 {
-  color: #333; /* normal light mode */
+  color: #333;
   margin: 0 0 0.5rem 0;
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-/* Dark mode override */
+/* Dark mode: clean off‑white title, no background or special effects */
 body.dark-mode .card h3 {
-  color: #f0f0f0;          /* off-white instead of red */
-  text-shadow: none;       /* remove inset/glow if applied */
+  color: #eee;                 /* off‑white */
+  background: transparent;     /* remove any white block */
+  box-shadow: none;            /* remove inset/emboss */
+  text-shadow: none;
+  filter: none;
+  -webkit-text-fill-color: #eee;  /* in case text-fill was set elsewhere */
+  -webkit-text-stroke: 0;         /* remove any stroke that can look inset */
+}
+
+body.dark-mode .card .card-title {
+  color: #eee;
+  background: transparent;
+  box-shadow: none;
+  text-shadow: none;
+  -webkit-text-fill-color: #eee;
+  -webkit-text-stroke: 0;
+}
+
+body.dark-mode .card {
+  background: #1e1e1e;                /* consistent with your dark theme */
+  color: #e0e0e0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .card h3,
+body.dark-mode .card h3 * {
+  background: transparent !important;
 }
 
 
