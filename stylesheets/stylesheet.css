@@ -678,6 +678,21 @@ body.dark-mode .navbar-right button {
   border: 1px solid #444;
 }
 
+/* Default card title */
+.card h3 {
+  color: #333; /* normal light mode */
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Dark mode override */
+body.dark-mode .card h3 {
+  color: #f0f0f0;          /* off-white instead of red */
+  text-shadow: none;       /* remove inset/glow if applied */
+}
+
+
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) { }
 
