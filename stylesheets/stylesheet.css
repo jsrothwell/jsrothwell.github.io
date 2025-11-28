@@ -372,11 +372,11 @@ h1, h2, h3, h4 {
   justify-content: space-between; /* spreads content evenly */
   font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
-	background: #fff;
+	background-color: #fff; /* replaces background: #fff */
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   will-change: transform;
 }
 
@@ -441,7 +441,7 @@ h1, h2, h3, h4 {
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 1rem;
-	/* background-color: #fff; */
+  background-color: #fff;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -665,8 +665,8 @@ body.dark-mode .navbar {
 }
 
 body.dark-mode .card {
-  background-color: #1e1e1e;
-  color: #e0e0e0;
+	background-color: #1e1e1e !important;
+	color: #e0e0e0 !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }
 
