@@ -582,3 +582,7 @@ body.dark-mode .site-title {
   -webkit-text-stroke: 0 !important;
   filter: none !important;
 }
+
+body.dark-mode #container {
+  background: none !important;
+}
