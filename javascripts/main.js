@@ -72,28 +72,27 @@ function renderRepos(sortBy, searchTerm, yearFilter, customRepos = null) {
       ? repo.topics.map(topic => `<span class="badge topic" data-topic="${topic}">${topic}</span>`).join("")
       : "";
 
-    card.innerHTML = `
-      <h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
-      <div class="card-content">
-        <p>${repo.description || "No description provided."}</p>
-        <div class="badges">
-          ${languageBadge}
-          ${topicBadges}
-        </div>
-      </div>
-      <div class="card-footer">
-        <p>
-          <i class="fa-solid fa-star"></i> ${repo.stargazers_count}
-          &nbsp; <i class="fa-solid fa-code-fork"></i> ${repo.forks_count}
-        </p>
-        <p>
-          <i class="fa-solid fa-clock"></i> Updated: ${new Date(repo.updated_at).toLocaleDateString()}
-        </p>
-        <a href="${repo.html_url}" target="_blank">View Repo</a>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
+    // Simple check: look for "AI" or "ML" in description or name
+  const isAI = /ai|ml|machine learning|artificial intelligence/i.test(
+    repo.description || repo.name
+  );
+
+  card.innerHTML = `
+    <h3><i class="fa-brands fa-github"></i> ${repo.name}</h3>
+    ${isAI ? '<span class="badge ai">AI Project</span>' : ''}
+    <p>${repo.description || "No description provided."}</p>
+    <p>
+      <i class="fa-solid fa-star"></i> ${repo.stargazers_count}
+      &nbsp; <i class="fa-solid fa-code-fork"></i> ${repo.forks_count}
+      &nbsp; <i class="fa-solid fa-code"></i> ${repo.language || "N/A"}
+    </p>
+    <p>
+      <i class="fa-solid fa-clock"></i> Updated: ${new Date(repo.updated_at).toLocaleDateString()}
+    </p>
+    <a href="${repo.html_url}" target="_blank">View Repo</a>
+  `;
+  grid.appendChild(card);
+});
 }
 
 // --- Topic filtering ---
