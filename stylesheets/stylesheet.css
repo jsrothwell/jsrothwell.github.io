@@ -707,15 +707,28 @@ body.dark-mode .card .card-title {
 }
 
 body.dark-mode .card {
-  background: #1e1e1e;                /* consistent with your dark theme */
-  color: #e0e0e0;
+  background-color: #1e1e1e !important;  /* dark neutral */
+  color: #e0e0e0 !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }
 
-body.dark-mode .card h3,
-body.dark-mode .card h3 * {
+body.dark-mode .card-content,
+body.dark-mode .card-footer {
   background: transparent !important;
 }
+
+body.dark-mode .card *,
+body.dark-mode .card h3,
+body.dark-mode .card p {
+  background: transparent !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .card {
+  border: none !important;
+  outline: none !important;
+}
+
 
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
