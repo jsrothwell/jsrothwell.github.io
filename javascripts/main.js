@@ -95,6 +95,11 @@ function renderRepos(sortBy, searchTerm, yearFilter, customRepos = null) {
 });
 }
 
+if (isAI) {
+  card.classList.add("ai-card");
+}
+
+
 // --- Topic filtering ---
 function filterByTopic(topic) {
   const searchTerm = document.getElementById("search").value;

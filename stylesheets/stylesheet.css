@@ -438,6 +438,22 @@ h1, h2, h3, h4 {
   border-color: #0366d6;
 }
 
+.badge.ai {
+  background: #ff4081; /* pink highlight */
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  margin-left: 8px;
+}
+
+.ai-card {
+  border: 2px solid #ff4081;
+  box-shadow: 0 0 12px rgba(255,64,129,0.4);
+}
+
+
 /* Toggle switch container */
 .switch {
   position: relative;
