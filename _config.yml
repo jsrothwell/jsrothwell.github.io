@@ -11,7 +11,8 @@ author:
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-slate
+theme: jekflix
+remote_theme: thiagorossener/jekflix-theme
 
 # Jekflix theme options
 paginate: 6
@@ -25,6 +26,7 @@ social:
 
 # Plugins (GitHub Pages supports these)
 plugins:
+  - jekyll-remote-theme
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
