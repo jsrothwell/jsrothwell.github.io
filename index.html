@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jamie Rothwell — Code &amp; Projects</title>
+  <meta name="description" content="Open-source tools, design systems and experiments by Jamie Rothwell, a design leader who builds and ships.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheets/site.css">
+</head>
+<body>
+  <main class="wrap">
+
+    <header class="intro">
+      <p class="eyebrow">Jamie Rothwell · Vancouver</p>
+      <h1>I design products, and I build them too.</h1>
+      <p class="lede">
+        I'm a senior design leader who ships. These are my open-source tools, design systems and experiments.
+        My shipped iOS and macOS apps live in private repos, but I'm happy to walk through the code on request.
+      </p>
+      <nav class="links">
+        <a class="btn primary" href="https://rothwell.design">Portfolio &amp; case studies</a>
+        <a class="btn" href="https://github.com/jsrothwell">GitHub profile</a>
+        <a class="btn" href="https://www.linkedin.com/in/jamie-s-rothwell/">LinkedIn</a>
+      </nav>
+    </header>
+
+    <section>
+      <h2>Shipped apps</h2>
+      <p class="section-note">Designed and built end to end. Source is private.</p>
+      <ul class="apps">
+        <li><a href="https://apps.apple.com/us/app/habitflo-daily-habit-tracker/id6778117646"><strong>HabitFlo</strong><span>Daily habit tracker</span></a></li>
+        <li><a href="https://apps.apple.com/us/app/museflo-daily-journal-diary/id6759934916"><strong>MuseFlo</strong><span>Daily journal &amp; diary</span></a></li>
+        <li><a href="https://apps.apple.com/us/app/orgflo-tasks-gtd-planner/id6778290806"><strong>OrgFlo</strong><span>Tasks &amp; GTD planner</span></a></li>
+        <li><a href="https://apps.apple.com/za/app/invoiceflo-invoice-tracker/id6778144291"><strong>InvoiceFlo</strong><span>Invoice tracker</span></a></li>
+        <li><a href="https://apps.apple.com/us/app/workflo-30-60-90-day-plan/id6778170799"><strong>WorkFlo</strong><span>30-60-90 day plans</span></a></li>
+        <li><a href="https://rothwell.design/casestudy-jobflo.php"><strong>JobFlo</strong><span>Job search tracker · case study</span></a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Featured</h2>
+      <div class="grid" id="featured"></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>All projects</h2>
+        <div class="controls">
+          <input type="search" id="search" placeholder="Search projects…" aria-label="Search projects">
+          <select id="sort" aria-label="Sort">
+            <option value="updated">Recently updated</option>
+            <option value="stars">Most starred</option>
+            <option value="name">Name</option>
+          </select>
+          <label class="check"><input type="checkbox" id="show-archive"> Include older &amp; forked</label>
+        </div>
+      </div>
+      <div id="groups"><p class="status">Loading projects…</p></div>
+    </section>
+
+    <footer>© Jamie Rothwell · <a href="https://rothwell.design">rothwell.design</a></footer>
+  </main>
+
+  <script src="javascripts/main.js"></script>
+</body>
+</html>
